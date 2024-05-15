@@ -1,0 +1,26 @@
+Package: cohortSurvivalAnalysis
+Type: Package
+Title: Survival analysis tool for OMOP CDM
+Version: 0.1.0
+Author: Greete Kelli Aava 
+Maintainer: Greete Kelli Aava <greete.kelli.aava@ut.ee>
+Description: 
+    Cohort Survival Analysis package automates query generation and manipulation,
+    performs queries and offers simple survival analysis information with Shiny.
+Imports:
+    dplyr,
+    tidyr,
+    ggplot2,
+    survminer,
+    survival,
+    shiny,
+    shinydashboard,
+    stringr,
+    readr,
+    ParallelLogger
+Remotes:
+    github::HealthInformaticsUT/Cohort2Trajectory
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1

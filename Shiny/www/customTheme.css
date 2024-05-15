@@ -1,0 +1,44 @@
+.skin-blue {
+  background-color: #ECF0F5;
+}
+
+.skin-blue .main-header .navbar, .skin-blue .main-header .logo {
+  background-color: #2C5696;/*ülikooli sinine: ##2C5696;*/
+}
+
+.main-header .navbar {
+  margin-left: 300px;
+}
+
+.main-header .logo {
+  width: 300px;
+  max-width: 300px;
+}
+
+.skin-blue .main-header .logo:hover {
+  background-color: #2C5696;
+}
+
+.skin-blue .main-sidebar .sidebar, #sidebarCollapsed, .skin-blue .wrapper {
+  font-family: "system-ui";
+  background-color: #ECF0F5;
+}
+
+#disease-label, #sliderAge-label, .checkbox > label > span, .radio > label > span, #dbMain-label, #dbCompare-label {
+  color: black;
+}
+
+.tab-content > div{
+  padding-top: 3%;
+}
+
+
+
+
+
+
+
+
+
+
+
