@@ -18,27 +18,28 @@
 #'
 #' @examples
 dataformat <- function(data, showAllAges, ageMin, ageMax) {
-  library(dplyr)
+  `%>%` <- magrittr::`%>%`
+  
   data <- data %>%
-    select(SUBJECT_ID,
+    dplyr::select(SUBJECT_ID,
            GENDER_CONCEPT_ID,
            AGE,
            STATE_LABEL,
            TIME_IN_COHORT) %>%
-    group_by(SUBJECT_ID) %>%
-    mutate(AGE = floor(min(AGE))) %>%
+    dplyr::group_by(SUBJECT_ID) %>%
+    dplyr::mutate(AGE = floor(min(AGE))) %>%
     tidyr::spread(key = STATE_LABEL, value = TIME_IN_COHORT) %>%
-    mutate(absorbingState = ifelse("absorbingState" %in% colnames(.), absorbingState, NA)) %>%
-    mutate(EVENT = ifelse(is.na(absorbingState), 0, 1)) %>%
-    rename(GENDER = GENDER_CONCEPT_ID, TIME = EXIT) %>%
-    filter(ifelse(showAllAges == FALSE, AGE >= ageMin &
+    dplyr::mutate(absorbingState = ifelse("absorbingState" %in% colnames(.), absorbingState, NA)) %>%
+    dplyr::mutate(EVENT = ifelse(is.na(absorbingState), 0, 1)) %>%
+    dplyr::rename(GENDER = GENDER_CONCEPT_ID, TIME = EXIT) %>%
+    dplyr::filter(ifelse(showAllAges == FALSE, AGE >= ageMin &
                     AGE <= ageMax, AGE > 0)) %>%
-    mutate(GENDER = ifelse(
+    dplyr::mutate(GENDER = ifelse(
       GENDER == 8532,
       "female",
       ifelse(GENDER == 8507, "male", "unknown")
     )) %>%
-    select(AGE, GENDER, TIME, EVENT)
+    dplyr::select(AGE, GENDER, TIME, EVENT)
 
   return(data)
 }
@@ -130,8 +131,7 @@ plot_KaplanMeierCombine <-
         pval = TRUE,
         pval.method = TRUE,
         conf.int = TRUE,
-        legend.labs = c("main db1", "main db2")#, "compare db1", "compare db2"),
-        #palette = c("blue", "red")#, "green", "pink")
+        legend.labs = c("main db", "compare db")
       )
     } else {
       fit <-
@@ -222,12 +222,12 @@ plot_gender <- function(data, showAllAges, ageMin, ageMax) {
   data <- dataformat(data, showAllAges, ageMin, ageMax)
   data$GENDER <- as.character(data$GENDER)
   plot_data <-
-    data %>% group_by(GENDER) %>% summarise(count = n()) %>%
-    mutate(fraction = count / sum(count)) %>%
-    mutate(ymax = cumsum(fraction)) %>%
-    mutate(ymin = c(0, head(ymax, n = -1))) %>%
-    mutate(labelPosition = (ymax + ymin) / 2) %>%
-    mutate(label = paste(GENDER, "\n value", count))
+    data %>% dplyr::group_by(GENDER) %>% summarise(count = n()) %>%
+    dplyr::mutate(fraction = count / sum(count)) %>%
+    dplyr::mutate(ymax = cumsum(fraction)) %>%
+    dplyr::mutate(ymin = c(0, head(ymax, n = -1))) %>%
+    dplyr::mutate(labelPosition = (ymax + ymin) / 2) %>%
+    dplyr::mutate(label = paste(GENDER, "\n value", count))
 
   ggplot2::ggplot(plot_data,
                   ggplot2::aes(
@@ -265,7 +265,7 @@ plot_gender <- function(data, showAllAges, ageMin, ageMax) {
 #' @examples
 plot_ageDistribution <- function(data) {
   data <- dataformat(data, TRUE, 0, 0)
-  data = data %>% group_by(AGE) %>% summarise(freq = n())
+  data = data %>% dplyr::group_by(AGE) %>% dplyr::summarise(freq = n())
   stats <- summary(data$AGE)
 
   ggplot2::ggplot(data, ggplot2::aes(

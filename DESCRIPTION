@@ -18,6 +18,7 @@ Imports:
     stringr,
     readr,
     gtools,
+    magrittr,
     ParallelLogger
 Remotes:
     github::HealthInformaticsUT/Cohort2Trajectory

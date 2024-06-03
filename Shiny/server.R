@@ -5,7 +5,8 @@
 ############
 
 server <- function(input, output, session) {
-  library(dplyr)
+  `%>%` <- magrittr::`%>%`
+  
   # available databases
   databaseDirs <-
     list.dirs("../tmp", full.names = FALSE, recursive = FALSE)
