@@ -237,10 +237,6 @@ addListVectorEl <-
     return(stateList)
   }
 
-
-# Load required library
-library(gtools)
-
 #' Create a vector with all possible combinations preserving the priority order
 #'
 #' @param states Vector of states

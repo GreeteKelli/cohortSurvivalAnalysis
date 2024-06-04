@@ -6,10 +6,10 @@
 \usage{
 cohortVisualAnalysis(
   readQueries = TRUE,
- 
-    cohortURL = "https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/cohorts/",
- 
-    cohortsURL = "https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/Cohorts.csv",
+  cohortURL =
+    "https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/cohorts/",
+  cohortsURL =
+    "https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/Cohorts.csv",
   days = 365,
   absorbingState = c("c688.json"),
   targetCohorts = NULL,
@@ -48,9 +48,6 @@ cohortVisualAnalysis(
 \item{cdmResultsSchema}{Schema which will contain the final results}
 
 \item{pathToResults}{}
-}
-\value{
-
 }
 \description{
 This function contains the main workflow for this R package.

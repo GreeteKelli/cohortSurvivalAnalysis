@@ -5,10 +5,10 @@
 \title{Read phenotype library to json}
 \usage{
 readPhenotypeLibraryToJson(
- 
-    cohortsURL = "https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/Cohorts.csv",
- 
-    cohortURL = "https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/cohorts/",
+  cohortsURL =
+    "https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/Cohorts.csv",
+  cohortURL =
+    "https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/cohorts/",
   inclusionRulesDays = 365,
   setInclusionRules = TRUE,
   cohortIds = NULL,
@@ -27,9 +27,6 @@ readPhenotypeLibraryToJson(
 \item{cohortIds}{(c()) default value NULL; adding vector with cohortIds will read only those cohorts}
 
 \item{pathToResults}{(String) path to working directory}
-}
-\value{
-
 }
 \description{
 This functions reads x.json cohorts from OHDSI/PhenotypeLibrary github
